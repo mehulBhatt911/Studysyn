@@ -1,0 +1,114 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day {
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    min-height: 48px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.past-day {
+    background-color: #fee2e2;
+    position: relative;
+}
+
+.past-day::after {
+    content: '✗';
+    color: #dc2626;
+    font-size: 1.8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.current-day {
+    background-color: #a5b4fc;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #4f46e5;
+}
+
+.future-day {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+}
+
+.completed-day {
+    background-color: #14b8a6;
+    color: white;
+    font-weight: bold;
+}
+
+.skipped-day {
+    background-color: #f87171;
+    color: white;
+}
+
+.pending-day {
+    background-color: #d1d5db;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #4b5563;
+}
+
+.weekdays div {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.month-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 25px 0 15px;
+    color: #1f2937;
+    text-align: center;
+}
+
+button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+.completed-mark {
+    color: #14b8a6;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
