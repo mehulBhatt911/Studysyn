@@ -100,6 +100,7 @@ document.getElementById('examForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('examName').value;
     const date = document.getElementById('examDate').value;
+    console.log('Creating exam:', { name, date }); // Debug log
     const exams = getStoredData('exams');
     exams.push({ name, date });
     saveData('exams', exams);
@@ -111,9 +112,23 @@ document.getElementById('challengeForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('challengeName').value;
     const days = parseInt(document.getElementById('challengeDays').value);
+    console.log('Creating challenge:', { name, days }); // Debug log
+    if (!name || isNaN(days) || days < 1) {
+        console.error('Invalid challenge input:', { name, days });
+        alert('Please enter a valid challenge name and number of days.');
+        return;
+    }
     const challenges = getStoredData('challenges');
-    challenges.push({ name, days, progress: Array(days).fill('pending'), streak: 0, lastUpdated: today.toISOString(), startDate: today.toISOString() });
+    challenges.push({
+        name,
+        days,
+        progress: Array(days).fill('pending'),
+        streak: 0,
+        lastUpdated: today.toISOString(),
+        startDate: today.toISOString()
+    });
     saveData('challenges', challenges);
+    console.log('Challenges after save:', challenges); // Debug log
     renderTrackers();
     e.target.reset();
 });
@@ -166,7 +181,7 @@ function viewChallenge(index) {
             <p class="text-lg mb-6 text-gray-700">Streak: <span class="font-semibold">${challenge.streak} Days</span></p>
             <div class="calendar-container">${calendarHTML}</div>
             <div class="mt-6 flex space-x-4">
-                ${canMarkToday ? `<button onclick="markDay(${index}, 'completed')" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">Mark Today Completed</button>` : ''}
+                ${canMarkToday ? `<button onclick="markDay(${index}, 'completed')" class="mark-complete-button">Mark Today Completed</button>` : ''}
                 ${canUnmarkToday ? `<button onclick="unmarkDay(${index})" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Unmark Today</button>` : ''}
             </div>
         </div>
