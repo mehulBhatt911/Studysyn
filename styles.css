@@ -12,6 +12,17 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
+.completed-card {
+    background-color: #e6fffa;
+    border-left: 4px solid #14b8a6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.completed-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
 .calendar-container {
     background: white;
     padding: 20px;
@@ -129,4 +140,8 @@ button:hover {
     background-color: #059669;
     transform: translateY(-3px);
     box-shadow: 0 6px 14px rgba(6, 214, 160, 0.4);
+}
+
+.hidden {
+    display: none;
 }
